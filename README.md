@@ -6,7 +6,7 @@ A React + TypeScript implementation of the classic word-finding game Boggle.
 
 ## 🎮 Play Now
 
-[Live Demo](#) ([Taylor's Boggle](https://taylor-boggle.netlify.app/))
+[Live Demo](https://taylor-boggle.netlify.app/)
 
 ## 📋 Overview
 
