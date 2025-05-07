@@ -1,54 +1,134 @@
-# React + TypeScript + Vite
+# Boggle Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript implementation of the classic word-finding game Boggle.
 
-Currently, two official plugins are available:
+![Boggle Game Screenshot](https://taylor-boggle.netlify.app/screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎮 Play Now
 
-## Expanding the ESLint configuration
+[Live Demo](#) ([Taylor's Boggle](https://taylor-boggle.netlify.app/))
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📋 Overview
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+In this implementation of Boggle, players try to find as many words as possible on a randomly generated 4×4 grid of letters. Words must be formed by connecting adjacent letters (horizontally, vertically, or diagonally) without reusing the same letter tile. The game follows official Boggle rules with a 3-minute time limit and standard scoring.
+
+## ✨ Features
+
+- 🎲 Random board generation using the official Boggle dice configuration
+- 🔍 Word validation against a comprehensive English dictionary
+- ⏱️ 3-minute countdown timer
+- 📊 Scoring based on official Boggle rules
+- 👆 Interactive letter selection with path visualization
+- 📱 Responsive design using Tailwind CSS
+- 📋 End-game summary showing all possible words, found words, and missed opportunities
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v14+)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/tmorse01/boggle-game.git
+   cd boggle-game
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open [http://localhost:5173](http://localhost:5173) to view the app in your browser.
+
+## 🎮 How to Play
+
+1. When the game starts, you'll see a 4×4 grid of random letters.
+2. Find words by clicking on adjacent letters to form paths.
+3. Words must be at least 3 letters long.
+4. You cannot use the same letter cube more than once in a word.
+5. Submit a word by clicking the "Submit" button or pressing Enter.
+6. The timer will count down from 3 minutes.
+7. When time expires, you'll see a summary of your performance.
+
+## 📏 Scoring
+
+- 3-4 letters: 1 point
+- 5 letters: 2 points
+- 6 letters: 3 points
+- 7 letters: 5 points
+- 8+ letters: 11 points
+
+## 🧰 Tech Stack
+
+- **React**: Front-end library for building the user interface
+- **TypeScript**: For type safety and improved developer experience
+- **Tailwind CSS**: For styling the application
+- **Vite**: For fast development and optimized builds
+
+## 🧪 Running Tests
+
+```bash
+npm run test
+# or
+yarn test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📚 Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+src/
+├── components/       # React components
+├── hooks/           # Custom React hooks
+├── types/           # TypeScript type definitions
+├── utils/           # Utility functions
+└── assets/          # Static assets
+```
+
+### Key Components
+
+- **Board**: Renders the 4×4 grid of letter tiles
+- **Tile**: Individual interactive letter tiles
+- **Timer**: Countdown timer component
+- **Score**: Displays the current score
+- **WordList**: Shows valid words found by the player
+- **Controls**: Game control buttons
+- **Results**: End-game summary with statistics
+
+### Algorithm
+
+The game uses a Depth-First Search (DFS) algorithm in the `solveBoard` function to find all possible words on the board. See our [technical documentation](./docs/project-overview.md) for more details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- Original Boggle game by Parker Brothers/Hasbro
+- Word list sourced from [English-Words](https://github.com/dwyl/english-words)
