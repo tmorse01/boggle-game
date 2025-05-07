@@ -63,13 +63,6 @@ const Controls: React.FC<ControlsProps> = ({
             </button>
 
             <button
-              onClick={() => startGame()}
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors duration-200"
-            >
-              Roll New Board
-            </button>
-
-            <button
               onClick={toggleCustomGrid}
               className="bg-white hover:bg-gray-100 text-blue-500 font-bold py-2 px-6 rounded-lg shadow-md transition-colors duration-200"
             >
@@ -141,6 +134,21 @@ const Controls: React.FC<ControlsProps> = ({
               `}
             >
               Clear Selection
+            </button>
+
+            <button
+              onClick={() => {
+                if (
+                  window.confirm("Are you sure you want to roll a new board?")
+                ) {
+                  startGame();
+                } else {
+                  return;
+                }
+              }}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors duration-200"
+            >
+              Roll New Board
             </button>
 
             <button
