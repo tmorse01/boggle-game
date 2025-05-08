@@ -34,24 +34,6 @@ const ResultsPage: React.FC = () => {
         <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md p-4 mb-4 text-blue-900 dark:text-white">
           <Score score={locationState.score} />
         </div>
-
-        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md p-4 text-blue-900 dark:text-white">
-          <h2 className="text-xl font-semibold mb-3 text-blue-900 dark:text-yellow-400">
-            Words Found
-          </h2>
-          <div className="max-h-64 overflow-y-auto">
-            <ul className="space-y-1">
-              {locationState.foundWords.map((word, index) => (
-                <li
-                  key={`found-${index}`}
-                  className="text-green-600 dark:text-green-400 font-medium"
-                >
-                  {word}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
       </div>
 
       <div className="md:col-span-2 flex flex-col items-center order-1 md:order-2">
