@@ -4,9 +4,10 @@ import type { Grid, Position } from "../types";
 
 interface BoardProps {
   grid: Grid;
-  selectedPath: Position[];
+  selectedPath?: Position[];
   onSelectTile: (position: Position) => void;
   showAnimation?: boolean;
+  disabled?: boolean;
 }
 
 const Board: React.FC<BoardProps> = ({
@@ -14,15 +15,16 @@ const Board: React.FC<BoardProps> = ({
   selectedPath,
   onSelectTile,
   showAnimation,
+  disabled = false,
 }) => {
   const isInPath = (row: number, col: number) => {
-    return selectedPath.some((pos) => pos.row === row && pos.col === col);
+    return selectedPath?.some((pos) => pos.row === row && pos.col === col);
   };
 
   const isLastInPath = (row: number, col: number) => {
-    if (selectedPath.length === 0) return false;
-    const lastPos = selectedPath[selectedPath.length - 1];
-    return lastPos.row === row && lastPos.col === col;
+    if (selectedPath?.length === 0) return false;
+    const lastPos = selectedPath?.[selectedPath.length - 1];
+    return lastPos?.row === row && lastPos.col === col;
   };
 
   return (
@@ -32,6 +34,7 @@ const Board: React.FC<BoardProps> = ({
       dark:bg-gray-800
       transition-all duration-500
       ${showAnimation ? "animate-pulse scale-105" : ""}
+      ${disabled ? "opacity-50 pointer-events-none" : ""}
     `}
     >
       <div className="grid grid-cols-4 gap-1">
@@ -40,7 +43,7 @@ const Board: React.FC<BoardProps> = ({
             <Tile
               key={`${rowIndex}-${colIndex}`}
               cell={cell}
-              isSelected={isInPath(rowIndex, colIndex)}
+              isSelected={isInPath(rowIndex, colIndex) ?? false}
               isLastSelected={isLastInPath(rowIndex, colIndex)}
               onSelect={onSelectTile}
             />
