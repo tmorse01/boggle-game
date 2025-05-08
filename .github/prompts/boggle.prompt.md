@@ -46,6 +46,29 @@ The app supports:
 - Which words the player found.
 - Missed words.
 
+## Theme tailwind variablesBackground:
+
+Background:
+
+from-blue-500 - Medium blue for gradient start
+to-indigo-600 - Deeper indigo for gradient end
+
+Text colors:
+
+text-white - White text for the main content
+text-blue-900 - Dark blue text for buttons and card content
+text-white/70 - White with 70% opacity for footer
+
+Button:
+
+bg-yellow-400 - Yellow background for the Start Game button
+text-blue-900 - Dark blue text for the button
+
+Cards:
+
+bg-white - White background for the feature cards
+text-blue-900 - Dark blue text for the card content
+
 ---
 
 ### Technical Notes
