@@ -57,6 +57,7 @@ const GamePage: React.FC = () => {
             onSelectTile={boggle.selectTile}
             selectedPath={boggle.selectedPath}
             showAnimation={boggle.showWordAnimation}
+            foundWords={boggle.foundWords}
           />
         </div>
 
