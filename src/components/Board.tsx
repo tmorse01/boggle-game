@@ -30,8 +30,7 @@ const Board: React.FC<BoardProps> = ({
   return (
     <div
       className={`
-      bg-amber-50 p-4 rounded-lg shadow-lg mb-6
-      dark:bg-gray-800
+      bg-yellow-500 p-4 rounded-lg shadow-lg mb-6
       transition-all duration-500
       ${showAnimation ? "animate-pulse scale-105" : ""}
       ${disabled ? "opacity-50 pointer-events-none" : ""}

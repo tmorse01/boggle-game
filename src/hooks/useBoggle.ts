@@ -81,13 +81,13 @@ const useBoggle = (wordSet: Set<string>, presetGrid?: string[][]) => {
     // Check if the word is valid (3+ letters and in dictionary)
     if (word.length < 3) {
       setErrorMessage("Word must be at least 3 letters");
-      setTimeout(() => setErrorMessage(null), 2000);
+      setTimeout(() => setErrorMessage(null), 1000);
     } else if (!wordSet.has(wordLower)) {
       setErrorMessage("Not a valid word");
-      setTimeout(() => setErrorMessage(null), 2000);
+      setTimeout(() => setErrorMessage(null), 1000);
     } else if (foundWords.includes(word)) {
       setErrorMessage("Word already found");
-      setTimeout(() => setErrorMessage(null), 2000);
+      setTimeout(() => setErrorMessage(null), 1000);
     } else {
       // Word is valid and not already found
       const wordScore = calculateScore(word);
@@ -98,7 +98,7 @@ const useBoggle = (wordSet: Set<string>, presetGrid?: string[][]) => {
       // Reset animation after a delay
       setTimeout(() => {
         setShowWordAnimation(false);
-      }, 1500);
+      }, 300);
     }
 
     // Reset path and current word
