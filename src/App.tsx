@@ -22,7 +22,6 @@ const AppLayout: React.FC = () => {
   // Determine title and back button based on current path
   const getLayoutProps = () => {
     const path = location.pathname;
-    console.log("Current path:", path);
     switch (path) {
       case "/":
         return {
