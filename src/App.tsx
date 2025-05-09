@@ -30,7 +30,7 @@ const AppLayout: React.FC = () => {
         };
       case "/game":
         return {
-          title: "Boggle Blitz",
+          title: "Boggle Bolt",
           showBackButton: true,
         };
       case "/results":
