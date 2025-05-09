@@ -51,7 +51,7 @@ const Controls: React.FC<ControlsProps> = ({
   };
 
   return (
-    <div className="mb-6">
+    <div>
       {gameState === "idle" || gameState === "finished" ? (
         <div className="space-y-4">
           <div className="flex flex-wrap gap-4">
@@ -89,7 +89,7 @@ const Controls: React.FC<ControlsProps> = ({
         </div>
       ) : (
         <div className="flex flex-col items-center space-y-3">
-          <div className="text-lg font-semibold text-center overflow-hidden transition-all duration-300 min-h-[28px]">
+          <div className="text-2xl font-semibold text-center overflow-hidden transition-all duration-300 min-h-[28px]">
             {errorMessage ? (
               <span className="text-red-600 dark:text-red-400 animate-fadeInOut">
                 {errorMessage}

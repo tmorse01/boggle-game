@@ -37,21 +37,21 @@ const GamePage: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
       <div className="flex flex-col order-2 md:order-1">
-        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md p-4 mb-4 text-blue-900 dark:text-white">
+        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md md:md:p-4 p-2 mb-4 text-blue-900 dark:text-white">
           <Timer timeLeft={boggle.timeLeft} />
         </div>
 
-        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md p-4 mb-4 text-blue-900 dark:text-white">
+        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md md:p-4 p-2 mb-4 text-blue-900 dark:text-white">
           <Score score={boggle.score} />
         </div>
 
-        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md p-4 flex-grow overflow-hidden text-blue-900 dark:text-white">
+        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md md:p-4 p-2 flex-grow overflow-hidden text-blue-900 dark:text-white">
           <WordList words={boggle.foundWords} />
         </div>
       </div>
 
       <div className="md:col-span-2 flex flex-col items-center order-1 md:order-2">
-        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md p-4 mb-6 w-full flex justify-center text-blue-900 dark:text-white">
+        <div className="md:min-w-sm bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md md:p-4 p-2 mb-6 w-full flex justify-center text-blue-900 dark:text-white">
           <Board
             grid={boggle.grid}
             onSelectTile={boggle.selectTile}
@@ -61,7 +61,7 @@ const GamePage: React.FC = () => {
           />
         </div>
 
-        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md p-4 w-full text-blue-900 dark:text-white">
+        <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md md:p-4 p-2 w-full text-blue-900 dark:text-white">
           <Controls
             startGame={boggle.startGame}
             submitWord={boggle.submitWord}
