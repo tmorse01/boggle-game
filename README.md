@@ -131,4 +131,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🙏 Acknowledgements
 
 - Original Boggle game by Parker Brothers/Hasbro
-- Word list sourced from [English-Words](https://github.com/dwyl/english-words)
+- Word list sourced from [Collins Scrabble Words](https://boardgames.stackexchange.com/questions/38366/latest-collins-scrabble-words-list-in-text-file)

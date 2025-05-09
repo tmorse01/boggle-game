@@ -13,6 +13,9 @@ This is a React + TypeScript implementation of the classic word game Boggle. In 
 - **Scoring System**: Implements official Boggle scoring rules based on word length
 - **Timed Gameplay**: Features a 3-minute countdown timer for authentic gameplay
 - **Results Analysis**: Shows a post-game summary of all possible words, found words, and missed opportunities
+- **Electric Animations**: Provides satisfying visual feedback with electric animations when words are correctly identified
+- **Page Routing**: Features dedicated landing, gameplay, and results pages with smooth transitions
+- **Classic Boggle Theme**: Implements a classic Boggle aesthetic with a blue and yellow color scheme
 
 ## Technical Architecture
 

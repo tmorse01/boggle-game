@@ -23,11 +23,11 @@ const Tile: React.FC<TileProps> = ({
       className={`
       w-16 h-16 m-1 rounded-md flex items-center justify-center 
       font-bold text-2xl transition-all duration-200 
-      border border-stone-300 
+      border 
       ${
         isSelected
-          ? "bg-stone-50 text-stone-900 transform scale-105 shadow-lg"
-          : "bg-stone-100 text-stone-800 hover:bg-stone-200"
+          ? "bg-blue-500 text-white transform scale-110 shadow-2xl border-blue-500"
+          : "bg-stone-100 text-stone-800 hover:bg-stone-200 border-stone-300"
       }
       ${isLastSelected ? "ring-4 ring-blue-300" : ""}
       dark:bg-stone-100 dark:text-stone-800 dark:hover:bg-stone-200
