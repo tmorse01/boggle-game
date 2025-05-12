@@ -11,7 +11,7 @@ export type Position = {
   col: number;
 };
 
-export type GameState = "idle" | "playing" | "finished";
+export type GameState = "idle" | "playing" | "solving" | "finished";
 
 export type GameResults = {
   foundWords: string[];

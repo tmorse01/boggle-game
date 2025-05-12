@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import type { GameState } from "../types";
 
 interface ControlsProps {
   startGame: (customGrid?: string[][], endGame?: boolean) => void;
   submitWord: () => void;
   resetSelection: () => void;
   currentWord?: string;
-  gameState?: "idle" | "playing" | "finished";
+  gameState?: GameState;
   errorMessage?: string | null;
 }
 
@@ -52,7 +53,9 @@ const Controls: React.FC<ControlsProps> = ({
 
   return (
     <div>
-      {gameState === "idle" || gameState === "finished" ? (
+      {gameState === "idle" ||
+      gameState === "finished" ||
+      gameState === "solving" ? (
         <div className="space-y-4">
           <div className="flex flex-wrap gap-4">
             <button

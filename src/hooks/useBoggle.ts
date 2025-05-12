@@ -113,22 +113,27 @@ const useBoggle = (wordSet: Set<string>, presetGrid?: string[][]) => {
   // End the game and calculate results
   const endGame = useCallback(() => {
     if (gameState === "playing") {
-      setGameState("finished");
+      setGameState("solving");
 
-      // Find all possible words on the board
-      const allPossibleWords = solveBoard(grid, wordSet);
+      // Use setTimeout to ensure the UI updates before heavy computation
+      setTimeout(() => {
+        // Find all possible words on the board
+        const allPossibleWords = solveBoard(grid, wordSet);
 
-      // Calculate missed words
-      const missedWords = allPossibleWords.filter(
-        (word) => !foundWords.includes(word)
-      );
+        // Calculate missed words
+        const missedWords = allPossibleWords.filter(
+          (word) => !foundWords.includes(word)
+        );
 
-      setResults({
-        foundWords,
-        missedWords,
-        allPossibleWords,
-        score,
-      });
+        setResults({
+          foundWords,
+          missedWords,
+          allPossibleWords,
+          score,
+        });
+
+        setGameState("finished");
+      }, 50); // Small delay to ensure state update and re-render
     }
   }, [gameState, grid, wordSet, foundWords, score]);
 
