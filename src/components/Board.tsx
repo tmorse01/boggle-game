@@ -1,5 +1,6 @@
 import React from "react";
 import Tile from "./Tile";
+import PathLines from "./PathLines";
 import type { Grid, Position } from "../types";
 import { calculateScore } from "../utils/gridUtils";
 
@@ -39,7 +40,6 @@ const Board: React.FC<BoardProps> = ({
   };
 
   const lastWordScore = getLastWordScore();
-
   return (
     <div
       className={`
@@ -49,7 +49,15 @@ const Board: React.FC<BoardProps> = ({
       ${disabled ? "opacity-90 pointer-events-none" : ""}
     `}
     >
-      <div className="grid grid-cols-4 gap-1">
+      <div className="grid grid-cols-4 gap-1 relative">
+        {selectedPath && selectedPath.length > 0 && (
+          <PathLines
+            selectedPath={selectedPath}
+            tileSize={64} // Match the w-16 (4rem = 64px) in Tile.tsx
+            margin={4} // Match the m-1 (0.25rem = 4px) in Tile.tsx
+            gridGap={4} // Match the gap-1 (0.25rem = 4px) in the grid
+          />
+        )}
         {grid.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
             <Tile

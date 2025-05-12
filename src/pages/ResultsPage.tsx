@@ -42,7 +42,7 @@ const ResultsPage: React.FC = () => {
         <div className="flex-2 bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md p-4 text-blue-900 dark:text-white">
           <Results
             results={locationState.results}
-            resetGame={() => navigate("/")}
+            resetGame={() => navigate("/game")}
           />
         </div>
       </div>
