@@ -7,10 +7,12 @@ import {
   getWordFromPath,
   solveBoard,
 } from "../utils/gridUtils";
+import type { WordListResult } from "./useWordList";
 
 const GAME_TIME = 180; // 3 minutes in seconds
 
-const useBoggle = (wordSet: Set<string>, presetGrid?: string[][]) => {
+const useBoggle = (wordListResult: WordListResult, presetGrid?: string[][]) => {
+  const { wordSet, trie } = wordListResult;
   const [grid, setGrid] = useState<Grid>(() => generateGrid(4, presetGrid));
   const [selectedPath, setSelectedPath] = useState<Position[]>([]);
   const [currentWord, setCurrentWord] = useState("");
@@ -117,8 +119,9 @@ const useBoggle = (wordSet: Set<string>, presetGrid?: string[][]) => {
 
       // Use setTimeout to ensure the UI updates before heavy computation
       setTimeout(() => {
-        // Find all possible words on the board
-        const allPossibleWords = solveBoard(grid, wordSet);
+        // Find all possible words on the board using pre-built trie for better performance
+        // Pass the trie that was already built when loading the word list, if it exists
+        const allPossibleWords = solveBoard(grid, wordSet, trie || undefined);
 
         // Calculate missed words
         const missedWords = allPossibleWords.filter(
@@ -135,7 +138,7 @@ const useBoggle = (wordSet: Set<string>, presetGrid?: string[][]) => {
         setGameState("finished");
       }, 50); // Small delay to ensure state update and re-render
     }
-  }, [gameState, grid, wordSet, foundWords, score]);
+  }, [gameState, grid, wordSet, trie, foundWords, score]);
 
   // Generate a new grid when the game starts or end current game
   const startGame = useCallback(

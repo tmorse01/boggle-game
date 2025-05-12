@@ -89,6 +89,14 @@ npm run test
 yarn test
 ```
 
+### Performance Benchmarking
+
+The project includes a benchmark utility to compare the performance of different word-finding algorithms:
+
+```bash
+npx tsx src/utils/benchmark.ts
+```
+
 ## 📚 Project Structure
 
 ```
@@ -112,7 +120,7 @@ src/
 
 ### Algorithm
 
-The game uses a Depth-First Search (DFS) algorithm in the `solveBoard` function to find all possible words on the board. See our [technical documentation](./docs/project-overview.md) for more details.
+The game uses an optimized Depth-First Search (DFS) algorithm with Trie-based prefix checking in the `solveBoard` function to efficiently find all possible words on the board. This approach allows for early pruning of invalid search paths, significantly improving performance. See our [technical documentation](./docs/project-overview.md) for more details.
 
 ## 🤝 Contributing
 

@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react";
+import { Trie } from "../utils/trieUtils";
 
-const useWordList = (): Set<string> => {
-  const [wordSet, setWordSet] = useState<Set<string>>(new Set());
+// Return type includes both the word set and optionally a trie
+export interface WordListResult {
+  wordSet: Set<string>;
+  trie: Trie | null;
+}
+
+const useWordList = (useTrie: boolean = false): WordListResult => {
+  const [result, setResult] = useState<WordListResult>({
+    wordSet: new Set<string>(),
+    trie: null,
+  });
 
   useEffect(() => {
     const loadWords = async () => {
@@ -17,16 +27,22 @@ const useWordList = (): Set<string> => {
           .toLowerCase()
           .split(/\r?\n/)
           .filter((word) => word.trim().length > 0);
-        setWordSet(new Set(words));
+
+        const wordSet = new Set(words);
+
+        // Only create the trie if requested (to save memory)
+        const trie = useTrie ? Trie.fromWordSet(wordSet) : null;
+
+        setResult({ wordSet, trie });
       } catch (error) {
         console.error("Error loading word list:", error);
       }
     };
 
     loadWords();
-  }, []);
+  }, [useTrie]);
 
-  return wordSet;
+  return result;
 };
 
 export default useWordList;

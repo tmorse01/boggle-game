@@ -10,8 +10,9 @@ import useWordList from "../hooks/useWordList";
 
 const GamePage: React.FC = () => {
   const navigate = useNavigate();
-  const wordSet = useWordList();
-  const boggle = useBoggle(wordSet);
+  // Use the Trie for better performance with word lookups
+  const wordListResult = useWordList(true);
+  const boggle = useBoggle(wordListResult);
 
   // Navigate to results page when game is finished
   React.useEffect(() => {

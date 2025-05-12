@@ -1,4 +1,5 @@
 import type { Grid, Cell, Position } from "../types";
+import { Trie } from "./trieUtils";
 
 // Dice configuration - Unable to confirm offical english dice configuration
 const DICE = [
@@ -130,16 +131,28 @@ export const getWordFromPath = (grid: Grid, path: Position[]): string => {
 };
 
 // Find all possible words on the board (for solving)
-export const solveBoard = (grid: Grid, wordSet: Set<string>): string[] => {
+export const solveBoard = (
+  grid: Grid,
+  wordSet: Set<string>,
+  existingTrie?: Trie
+): string[] => {
   const size = grid.length;
   const foundWords: Set<string> = new Set();
   const minWordLength = 3;
 
+  // Use the provided trie if available or create a new one
+  const trie = existingTrie || Trie.fromWordSet(wordSet);
+
   const dfs = (pos: Position, visited: boolean[][], currentWord: string) => {
+    // Check if current prefix can form any word
+    if (!trie.startsWith(currentWord.toLowerCase())) {
+      return; // Early pruning - this prefix won't lead to any valid word
+    }
+
     // Check if current word is in the wordlist and is long enough
     if (
       currentWord.length >= minWordLength &&
-      wordSet.has(currentWord.toLowerCase())
+      trie.search(currentWord.toLowerCase())
     ) {
       foundWords.add(currentWord);
     }

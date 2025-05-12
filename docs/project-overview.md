@@ -48,31 +48,33 @@ The application follows a clean component-based architecture:
   - `calculateScore`: Scores words according to Boggle rules
   - Helper functions for position validation, adjacency checking, etc.
 
-## Key Algorithm: Board Solving with DFS
+## Key Algorithm: Board Solving with DFS and Trie Optimization
 
-The `solveBoard` function implements a **Depth-First Search (DFS)** algorithm to exhaustively find all valid words on the Boggle board:
+The `solveBoard` function implements a **Depth-First Search (DFS)** algorithm optimized with a **Trie** data structure to efficiently find all valid words on the Boggle board:
 
 1. **Initialization**:
 
+   - Creates a Trie data structure from the dictionary for efficient prefix checking
    - Starts from each cell in the grid as a potential starting point
    - Maintains a visited matrix to prevent reusing letters
 
-2. **Recursive Exploration**:
+2. **Optimized Recursive Exploration**:
 
    - For each starting position, explores all possible paths by recursively visiting adjacent cells
    - Builds up word candidates letter by letter as it traverses the grid
-   - Checks if current paths form valid words in the dictionary
+   - **Early Pruning**: Uses the Trie to check if the current prefix can form any valid word
+   - Immediately stops exploring paths that cannot lead to valid words
 
 3. **Backtracking**:
 
    - After exploring a path, marks cells as unvisited to allow them to be used in other word paths
-   - This ensures all possible letter combinations are checked
+   - This ensures all possible valid letter combinations are checked
 
 4. **Word Collection**:
    - Adds valid words (3+ letters) to a result set as they're discovered
    - Returns a deduplicated list of all found words at the end
 
-This algorithm efficiently solves the board by systematically exploring all possible letter paths without any redundant checks.
+This optimized algorithm significantly improves performance by pruning invalid search paths early, especially for large dictionaries and complex board configurations.
 
 ## Styling and User Experience
 
@@ -95,7 +97,7 @@ The application is styled entirely with **Tailwind CSS** for:
 1. **Efficient Word Validation**:
 
    - Challenge: Checking words against a large dictionary quickly
-   - Solution: Using Set data structure for O(1) lookups
+   - Solution: Using Set data structure for O(1) lookups and Trie data structure for efficient prefix checking
 
 2. **Path Validation**:
 
@@ -113,5 +115,10 @@ The application is styled entirely with **Tailwind CSS** for:
    - Solution: Implementing the official Boggle dice configuration rather than random letters
 
 5. **Finding All Solutions**:
+
    - Challenge: Efficiently finding all possible words on the board
-   - Solution: Optimized DFS algorithm with backtracking
+   - Solution: Optimized DFS algorithm with Trie-based prefix checking for early pruning of invalid paths
+
+6. **Performance Optimization**:
+   - Challenge: Reducing computation time when solving large boards or using extensive dictionaries
+   - Solution: Implementing a Trie data structure that allows for immediate rejection of invalid word prefixes
