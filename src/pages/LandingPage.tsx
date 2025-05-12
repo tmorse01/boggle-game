@@ -1,11 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import LandingPageControls from "../components/LandingPageControls";
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleStartGame = () => {
-    navigate("/game");
+  const handleStartGame = (customGrid?: string[][]) => {
+    navigate("/game", {
+      state: {
+        customGrid,
+      },
+    });
   };
 
   return (
@@ -16,14 +21,10 @@ const LandingPage: React.FC = () => {
       <p className="text-lg mb-8 max-w-xl mx-auto flex items-center justify-center">
         Find as many words as you can before the timer runs out! Challenge
         yourself or compete with friends in this fast-paced word game.
-      </p>
-      <button
-        onClick={handleStartGame}
-        className="px-8 py-4 bg-yellow-400 text-blue-900 font-bold rounded-full shadow-lg hover:scale-105 transition-transform"
-      >
-        Start Game
-      </button>
-
+      </p>{" "}
+      <div className="max-w-xl mx-auto">
+        <LandingPageControls onSubmit={handleStartGame} />
+      </div>
       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
         <div className="bg-white text-blue-900 rounded-lg p-4 shadow hover:shadow-lg transition-shadow">
           <h3 className="font-bold mb-2 text-lg">⏱ 3-Minute Timer</h3>

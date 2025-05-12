@@ -48,7 +48,7 @@ const Board: React.FC<BoardProps> = ({
       bg-yellow-500 p-4 rounded-lg shadow-lg
       transition-all duration-200 relative
       ${showAnimation ? "animate-pulse scale-102" : ""}
-      ${disabled ? "opacity-90 pointer-events-none" : ""}
+      ${disabled ? "opacity-90 pointer-events-none cursor-not-allowed" : ""}
     `}
     >
       <div className="grid grid-cols-4 gap-1 relative">

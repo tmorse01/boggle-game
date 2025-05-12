@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Board from "../components/Board";
 import WordList from "../components/WordList";
 import Timer from "../components/Timer";
@@ -10,9 +10,20 @@ import useWordList from "../hooks/useWordList";
 
 const GamePage: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const customGrid = location.state?.customGrid;
+
   // Use the Trie for better performance with word lookups
   const wordListResult = useWordList(true);
-  const boggle = useBoggle(wordListResult);
+  const boggle = useBoggle(wordListResult, customGrid);
+
+  // Start the game automatically when the component mounts
+  useEffect(() => {
+    // Check if the word set is populated to ensure the word list has loaded
+    if (wordListResult.wordSet.size > 0 && boggle.gameState === "idle") {
+      boggle.startGame(customGrid);
+    }
+  }, [wordListResult, boggle, customGrid]);
 
   // Navigate to results page when game is finished
   React.useEffect(() => {
@@ -77,7 +88,6 @@ const GamePage: React.FC = () => {
             submitWord={boggle.submitWord}
             resetSelection={boggle.resetSelection}
             currentWord={boggle.currentWord}
-            gameState={boggle.gameState}
             errorMessage={boggle.errorMessage}
           />
         </div>
