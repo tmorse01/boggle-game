@@ -71,10 +71,8 @@ const useBoggle = (wordSet: Set<string>, presetGrid?: string[][]) => {
   // Submit the current word
   const submitWord = useCallback(() => {
     if (gameState !== "playing" || selectedPath.length === 0) return;
-
     const word = getWordFromPath(grid, selectedPath);
-    const wordLower = word.toLowerCase().replace("qu", "q"); // Handle special Qu case for dictionary lookup
-
+    const wordLower = word.toLowerCase();
     // Clear any previous error message
     setErrorMessage(null);
 
