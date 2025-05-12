@@ -51,7 +51,8 @@ const Layout: React.FC<LayoutProps> = ({
             onClick={handleBackNavigation}
             className="text-yellow-400 dark:text-yellow-400 font-medium hover:underline flex items-center gap-2"
           >
-            <span>←</span> Back to Home
+            <span>←</span>
+            <span className="hidden sm:inline">Back to Home</span>
           </button>
         ) : (
           <div />
