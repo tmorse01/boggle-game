@@ -1,12 +1,28 @@
 @import "tailwindcss";
 
 @layer utilities {
+  /* Added fast transition utility classes for responsive tiles */
+  .transition-fast {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 80ms;
+  }
+
+  .scale-102 {
+    transform: scale(1.02);
+  }
+
+  .transition-color-only {
+    transition-property: background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 100ms;
+  }
   .animate-fadeIn {
     animation: fadeIn 0.5s ease-in-out;
   }
 
   .animate-wordSuccess {
-    animation: wordSuccess 1.5s ease-in-out;
+    animation: wordSuccess 0.8s ease-in-out;
   }
 
   .animate-gameOver {
@@ -68,8 +84,8 @@
   0% {
     transform: scale(1);
   }
-  20% {
-    transform: scale(1.05);
+  30% {
+    transform: scale(1.03);
   }
   100% {
     transform: scale(1);

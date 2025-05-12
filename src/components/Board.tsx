@@ -46,8 +46,8 @@ const Board: React.FC<BoardProps> = ({
       className={`
       w-[332px] h-[332px]
       bg-yellow-500 p-4 rounded-lg shadow-lg
-      transition-all duration-500 relative
-      ${showAnimation ? "animate-pulse scale-105" : ""}
+      transition-all duration-200 relative
+      ${showAnimation ? "animate-pulse scale-102" : ""}
       ${disabled ? "opacity-90 pointer-events-none" : ""}
     `}
     >
