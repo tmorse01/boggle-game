@@ -44,6 +44,7 @@ const Board: React.FC<BoardProps> = ({
   return (
     <div
       className={`
+      w-[332px] h-[332px]
       bg-yellow-500 p-4 rounded-lg shadow-lg
       transition-all duration-500 relative
       ${showAnimation ? "animate-pulse scale-105" : ""}
