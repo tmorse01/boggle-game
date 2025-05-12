@@ -8,9 +8,7 @@ interface LayoutProps {
   showBackButton?: boolean;
   backButtonUrl?: string;
   darkMode?: boolean;
-  soundEnabled?: boolean;
   onDarkModeToggle?: () => void;
-  onSoundToggle?: () => void;
 }
 
 const Layout: React.FC<LayoutProps> = ({
@@ -19,20 +17,11 @@ const Layout: React.FC<LayoutProps> = ({
   showBackButton = false,
   backButtonUrl = "/",
   darkMode = false,
-  soundEnabled = true,
   onDarkModeToggle,
-  onSoundToggle,
 }) => {
   const navigate = useNavigate();
 
   const handleBackNavigation = () => {
-    if (soundEnabled) {
-      // Play sound effect (if available)
-      const audio = new Audio("/click.mp3");
-      audio.play().catch(() => {
-        // Fail silently if sound can't be played
-      });
-    }
     navigate(backButtonUrl);
   };
 
@@ -70,15 +59,6 @@ const Layout: React.FC<LayoutProps> = ({
               aria-label="Toggle dark mode"
             >
               {darkMode ? "🌞" : "🌙"}
-            </button>
-          )}
-          {onSoundToggle && (
-            <button
-              onClick={onSoundToggle}
-              className="p-2 rounded-full bg-white/30 dark:bg-gray-700 text-white dark:text-gray-300 hover:bg-white/40 dark:hover:bg-gray-600 transition-colors"
-              aria-label="Toggle sound"
-            >
-              {soundEnabled ? "🔊" : "🔇"}
             </button>
           )}
         </div>

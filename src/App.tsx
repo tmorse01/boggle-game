@@ -17,7 +17,6 @@ import "./App.css";
 const AppLayout: React.FC = () => {
   const location = useLocation();
   const [darkMode, setDarkMode] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(true);
 
   // Determine title and back button based on current path
   const getLayoutProps = () => {
@@ -56,9 +55,7 @@ const AppLayout: React.FC = () => {
     <Layout
       {...getLayoutProps()}
       darkMode={darkMode}
-      soundEnabled={soundEnabled}
       onDarkModeToggle={toggleDarkMode}
-      onSoundToggle={() => setSoundEnabled(!soundEnabled)}
     >
       <Outlet />
     </Layout>
