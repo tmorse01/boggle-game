@@ -21,7 +21,7 @@ const LandingPage: React.FC = () => {
       <p className="text-lg mb-8 max-w-xl mx-auto flex items-center justify-center">
         Find as many words as you can before the timer runs out! Challenge
         yourself or compete with friends in this fast-paced word game.
-      </p>{" "}
+      </p>
       <div className="max-w-xl mx-auto">
         <LandingPageControls onSubmit={handleStartGame} />
       </div>
